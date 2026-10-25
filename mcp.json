@@ -1,0 +1,53 @@
+{
+  "mcpServers": {
+    "archimedes-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "ARCHIMEDES",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "compute_hydrostatic_displacement",
+          "description": "Calculates buoyant force vectors, center of buoyancy equilibrium and volumetric fluid displacement",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "object_volume_m3": {
+                "type": "number"
+              },
+              "fluid_density_kg_m3": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "object_volume_m3"
+            ]
+          }
+        },
+        {
+          "name": "evaluate_parabolic_quadrature",
+          "description": "Executes the method of exhaustion to calculate areas of parabolic segments and polygonal pi bounds",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "polygon_sides": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "polygon_sides"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
